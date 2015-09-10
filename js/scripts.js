@@ -8,12 +8,11 @@ function decimalToBase(number, base){
     answer.push(0);
     exponent++;
   }
-
   exponent -= 1;
 
   for (var i = 0; i <= exponent; i++){
-    if ((difference - Math.pow(base, exponent - i)) >= 0){
-      answer[i] = 1;
+    while ((difference - Math.pow(base, exponent - i)) >= 0){
+      answer[i] += 1;
       difference = difference - Math.pow(base, exponent - i);
     }
   }

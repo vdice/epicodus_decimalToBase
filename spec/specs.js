@@ -1,36 +1,61 @@
 describe('decimalToBase', function() {
-  it('returns \'0\' when the input (is 0, 2)', function(){
-    expect(decimalToBase(0, 2)).to.equal('0');
-  });
-  it('returns \'1\' when the input (is 1, 2)', function(){
-    expect(decimalToBase(1, 2)).to.equal('1');
-  });
-  it('returns \'10\' when the input (is 2, 2)', function(){
-    expect(decimalToBase(2, 2)).to.equal('10');
+  describe('base = 2', function() {
+    var base = 2;
+    var data = [{args: [0, base], expected: '0'},
+               {args: [1, base], expected: '1'},
+               {args: [2, base], expected: '10'},
+               {args: [3, base], expected: '11'},
+               {args: [7, base], expected: '111'},
+               {args: [12, base], expected: '1100'},
+               {args: [15, base], expected: '1111'},
+               {args: [16, base], expected: '10000'},
+               {args: [32, base], expected: '100000'}];
+
+    data.forEach(function(obj) {
+      it('returns \'' + obj.expected + '\' when the input is ' + obj.args, function(){
+        expect(decimalToBase(obj.args[0], obj.args[1])).to.equal(obj.expected);
+      });
+    });
   });
 
-  it('returns \'11\' when the input (is 3, 2)', function(){
-    expect(decimalToBase(3, 2)).to.equal('11');
+  describe('base = 3', function() {
+    var base = 3;
+    var data = [{args: [0, base], expected: '0'},
+               {args: [1, base], expected: '1'},
+               {args: [2, base], expected: '2'},
+               {args: [3, base], expected: '10'},
+               {args: [7, base], expected: '21'},
+               {args: [12, base], expected: '110'},
+               {args: [15, base], expected: '120'},
+               {args: [16, base], expected: '121'},
+               {args: [26, base], expected: '222'},
+               {args: [27, base], expected: '1000'}];
+
+    data.forEach(function(obj) {
+      it('returns \'' + obj.expected + '\' when the input is ' + obj.args, function(){
+        expect(decimalToBase(obj.args[0], obj.args[1])).to.equal(obj.expected);
+      });
+    });
   });
 
-  it('returns \'1100\' when the input (is 12, 2)', function(){
-    expect(decimalToBase(12, 2)).to.equal('1100');
-  });
+  describe('base = 10', function() {
+    var base = 10;
+    var data = [{args: [0, base], expected: '0'},
+               {args: [1, base], expected: '1'},
+               {args: [2, base], expected: '2'},
+               {args: [3, base], expected: '3'},
+               {args: [7, base], expected: '7'},
+               {args: [12, base], expected: '12'},
+               {args: [15, base], expected: '15'},
+               {args: [16, base], expected: '16'},
+               {args: [26, base], expected: '26'},
+               {args: [27, base], expected: '27'}];
 
-  it('returns \'111\' when the input (is 7, 2)', function(){
-    expect(decimalToBase(7, 2)).to.equal('111');
-  });
-
-  it('returns \'1111\' when the input (is 15, 2)', function(){
-    expect(decimalToBase(15, 2)).to.equal('1111');
-  });
-
-  it('returns \'10000\' when the input (is 16, 2)', function(){
-    expect(decimalToBase(16, 2)).to.equal('10000');
-  });
-
-  it('returns \'100000\' when the input (is 32, 2)', function(){
-    expect(decimalToBase(32, 2)).to.equal('100000');
+    data.forEach(function(obj) {
+      it('returns \'' + obj.expected + '\' when the input is ' + obj.args, function(){
+        expect(decimalToBase(obj.args[0], obj.args[1])).to.equal(obj.expected);
+      });
+    });
   });
 
 });
