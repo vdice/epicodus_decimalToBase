@@ -22,3 +22,11 @@ function decimalToBase(number, base){
 
   return number === 0 ? '0' : answer.join("");
 };
+
+// solution using recursion supporting base <= 9:
+// (NOTE: ~~ operator is a faster substitute for Math.floor())
+// var t = function f(n, s, base) {
+//     return n === 0 ? s || "0" : f(~~(n / base), (n % base) + s, base);
+// }
+//
+// invoke with: t(2, "", 2) = "10" for decimal 2 to binary form
