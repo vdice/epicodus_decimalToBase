@@ -1,4 +1,5 @@
 function decimalToBase(number, base){
+  var TO_ASCII_OFFSET = 65;
   var difference = number;
   var answer = [];
   var exponent = 0;
@@ -15,7 +16,7 @@ function decimalToBase(number, base){
       difference = difference - Math.pow(base, exponent - i);
     }
     if (answer[i] >= 9){
-      answer[i] = String.fromCharCode(answer[i] - 10 + 65)
+      answer[i] = String.fromCharCode(answer[i] - 10 + TO_ASCII_OFFSET)
     }
   }
 
