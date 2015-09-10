@@ -58,4 +58,24 @@ describe('decimalToBase', function() {
     });
   });
 
+  describe('base = 16', function() {
+    var base = 16;
+    var data = [{args: [0, base], expected: '0'},
+               {args: [1, base], expected: '1'},
+               {args: [2, base], expected: '2'},
+               {args: [3, base], expected: '3'},
+               {args: [7, base], expected: '7'},
+               {args: [12, base], expected: 'C'},
+               {args: [15, base], expected: 'F'},
+               {args: [16, base], expected: '10'},
+               {args: [26, base], expected: '1A'},
+               {args: [27, base], expected: '1B'},
+               {args: [234, base], expected: 'EA'}];
+
+    data.forEach(function(obj) {
+      it('returns \'' + obj.expected + '\' when the input is ' + obj.args, function(){
+        expect(decimalToBase(obj.args[0], obj.args[1])).to.equal(obj.expected);
+      });
+    });
+  });
 });
