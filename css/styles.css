@@ -1,0 +1,6 @@
+#result {
+  display: none;
+}
+#converted-text {
+  word-wrap: break-word;
+}
