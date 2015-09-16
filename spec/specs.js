@@ -79,3 +79,14 @@ describe('decimalToBase', function() {
     });
   });
 });
+
+describe('String.prototype.toBase', function() {
+  it('returns the correct binary translation for \'SISYPHUS\'', function() {
+    expect('SISYPHUS'.toBase(2)).to.equal('0101001101001001010100110101100101010000010010000101010101010011');
+    expect('sisyphus'.toBase(2)).to.equal('0111001101101001011100110111100101110000011010000111010101110011');
+  });
+  it('returns the correct hex translation for \'SISYPHUS\'', function() {
+    expect('SISYPHUS'.toBase(16)).to.equal('5349535950485553');
+    expect('sisyphus'.toBase(16)).to.equal('7369737970687573');
+  });
+});

@@ -15,8 +15,8 @@ function decimalToBase(number, base){
       answer[i] += 1;
       difference = difference - Math.pow(base, exponent - i);
     }
-    if (answer[i] >= 9){
-      answer[i] = String.fromCharCode(answer[i] - 10 + TO_ASCII_OFFSET)
+    if (answer[i] > 9){
+      answer[i] = String.fromCharCode((answer[i] - 10) + TO_ASCII_OFFSET)
     }
   }
 
@@ -30,3 +30,16 @@ function decimalToBase(number, base){
 // }
 //
 // invoke with: t(2, "", 2) = "10" for decimal 2 to binary form
+
+String.prototype.toBase = function(base) {
+  var baseRepresentations = [];
+  for (var i = 0; i < this.length; i++) {
+    var asciiRepresentation = this.charCodeAt(i);
+    var baseRepresentation = decimalToBase(asciiRepresentation, base);
+    if (base === 2) {
+      baseRepresentation = '0' + baseRepresentation
+    }
+    baseRepresentations.push(baseRepresentation);
+  }
+  return baseRepresentations.join("");
+}
