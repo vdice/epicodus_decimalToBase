@@ -78,9 +78,15 @@ String.prototype.toBase = function(base) {
 }
 
 $(function() {
+  $("#submit-button").html('<i class="fa fa-hand-o-right"></i>');
   $("form#text-input-form").submit(function(event) {
     event.preventDefault();
     resetOutput();
+    $("#submit-button").html('<i class="fa fa-thumbs-o-up"></i>');
+
+    $("#text-to-convert").focus(function() {
+      $("#submit-button").html('<i class="fa fa-hand-o-right"></i>');
+    });
 
     var textToConvert = $("input#text-to-convert").val();
     var base = Number($("input#base").val());
